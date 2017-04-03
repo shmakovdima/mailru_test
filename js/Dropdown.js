@@ -3,7 +3,6 @@
 
   var $ = window.jQuery;
 
-
   // Дефолтные опции
   var defaultOptions = {
     main: {
@@ -17,22 +16,23 @@
       },
       dropdownButton: '.dropdown__button',
       dropdownItem: '.dropdown__item'
-    },
-
+    }
   }
-
 
   var Dropdown = window.ru.mail.cpf.Basic.getView({
     _Handlers: {
       dom: {
+        // Клик по кнопке дропдауна
         'click:dropdownButton' (event) {
           this.toogleDropdown(true);
         },
+
+        // Клик по элемента выбора дропдауна
         'click:dropdownItem' (event) {
           var element = event.currentTarget
-
           var id = element.getAttribute('data-id');
 
+          // Если элемент не disabled и он не равняется предыдущему - то отработать клик по элементу
           if ((!element.hasAttribute('disabled')) && (id != this.statusId)) this.clickItem(element);
         }
       }
@@ -104,7 +104,9 @@
      */
 
    toogleDropdown(status) {
+     // Меняем статус
      this.changeStatus(status);
+     // cсылка на текущие классы
      var elementClass = this._elems.parent[0].classList;
 
      if (this.isOpen) {
@@ -132,12 +134,12 @@
 
       // Если не было в активных, то вешаем класс и добавляем id в массив
       if (this.haveSelected.indexOf(id) === -1) {
-        this.haveSelected.push(id)
-        element.classList.add(activeClass)
+        this.haveSelected.push(id);
+        element.classList.add(activeClass);
       }
-
+      // Поменяем текст у кнопки
       this._elems.parent.find('button').text(this.statusText);
-
+      // Закроем дропдаун
       this.toogleDropdown(false);
     },
 
@@ -146,19 +148,20 @@
      */
 
     clickOutside() {
-      // Передаем ссылку на this
+      // Сохраняем контекст
       var self = this;
+
+      // Отработает клик по document
       document.addEventListener('click', function(event){
+        // Проверим - есть ли елемент
         var contains = self._elems.parent.get(0).contains(event.target);
 
-        console.log(self);
-
+        // Не содержит - закрыли
         if (!contains) {
           self.toogleDropdown(false);
         }
       });
     }
-
   }, defaultOptions, null, 'Dropdown');
 
 
