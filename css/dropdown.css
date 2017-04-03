@@ -56,26 +56,39 @@ header {
 	margin-left: 50px;
 }
 
-.dropdown div {
+.dropdown button {
+	outline: none;
 	cursor: pointer;
 	border-radius: 5px;
+	font-size: 1em;
+	border: none;
 	padding: 5px 10px;
 	background: #ccc;
 }
-.dropdown__expanded div {
+.dropdown__expanded button {
 	color: #fff;
 	background: #333;
 }
 
 .dropdown ul {
 	margin: 5px 0;
-
+	height: 0px;
+	opacity: 0;
+	overflow: hidden;
+	transform: 150ms all linear;
 	border-radius: 5px;
 	padding: 0;
 	position: absolute;
 	box-shadow: 0 1px 3px rgba(0,0,0,.5);
 	list-style: none;
 }
+
+.dropdown__expanded ul {
+	opacity: 1;
+	height: auto;
+}
+
+
 .dropdown li {
 	cursor: pointer;
 	padding: 5px 20px;
@@ -89,4 +102,8 @@ header {
 	color: #ccc;
 	cursor: text;
 	background: none;
+}
+
+.dropdown__item-active {
+	background: #FFF9C4;
 }
