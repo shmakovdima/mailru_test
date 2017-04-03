@@ -26,7 +26,7 @@
     _Handlers: {
       dom: {
         'click:dropdownButton' (event) {
-          this.toogleDropdown();
+          this.toogleDropdown(true);
         },
         'click:dropdownItem' (event) {
           var element = event.currentTarget
@@ -78,10 +78,11 @@
 
     /**
      * Смена состояния дропдауна
+     * @param {boolean} status Открыт/Закрыт
      */
 
-    changeStatus() {
-      this.isOpen = !this.isOpen
+    changeStatus(status) {
+      this.isOpen = status
     },
 
     /**
@@ -137,7 +138,7 @@
 
       this._elems.parent.find('button').text(this.statusText);
 
-      this.toogleDropdown();
+      this.toogleDropdown(false);
     },
 
     /*
