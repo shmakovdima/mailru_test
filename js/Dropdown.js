@@ -131,7 +131,6 @@
       // Удаляем все активные, если не по нему
       this._elems.parent.find('li').removeClass(activeClass);
 
-
       // Если не было в активных, то вешаем класс и добавляем id в массив
       if (this.haveSelected.indexOf(id) === -1) {
         this.haveSelected.push(id);
@@ -141,6 +140,7 @@
       this._elems.parent.find('button').text(this.statusText);
       // Закроем дропдаун
       this.toogleDropdown(false);
+      this._trigger('itemClick');
     },
 
     /*

@@ -90,6 +90,7 @@ header {
 
 
 .dropdown li {
+	transition: 100ms all ease-in;
 	cursor: pointer;
 	padding: 5px 20px;
 }

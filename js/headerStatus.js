@@ -1,8 +1,8 @@
+// Выводим текст самого последнего выбранного элемента
 (function (window) {
   dropdowns.forEach(function(value) {
-    console.log(value);
     value.on('itemClick', function(event) {
-      alert('ok')
+      $('.header__status-result').text(value.getState().statusText);
     });
   });
 })(window)
